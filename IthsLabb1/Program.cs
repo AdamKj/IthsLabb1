@@ -9,21 +9,15 @@ namespace IthsLabb1
         static void Main(string[] args)
         {
             //Mata in en sträng, siffror och bokstäver. Strängen ska sökas igenom och markera där strängen börjar och slutar på samma siffra utan att bli avbruten av en bokstav.
-            //Hitta ett sätt att spara flera tal/strängar
-
-
-            //Om inte, kolla nästa
-            //Kolla från nästa tecken och framåt
-
-            //Se om tecknet är samma som ifrån det yttre
-            //Om samma tecken påträffas, spara
-
             
 
             //Be användaren mata in en textsträng
             Console.WriteLine("Mata in valfri sträng av bokstäver och siffror");
-            string input = "29535123p48723487597645723645";
+            string input = Console.ReadLine();  //"29535123p48723487597645723645";
+            
+            //Variabel för summan av delsträngarna
             long sum = 0;
+            
 
             //Loopa igenom alla tecken
             for (int i = 0; i < input.Length; i++)
@@ -42,9 +36,19 @@ namespace IthsLabb1
                     {
                         if (input[i] == input[j])
                         {
+                            //Hittar de matchande delsträngarna samt kollar så den resterande texten i strängen inte blir en matchande delsträng
                             string numberMatch = input.Substring(i, j - i + 1);
-                            Console.WriteLine("");
-                            Console.WriteLine(numberMatch);
+                            string firstMatch = input.Substring(0, input.IndexOf(numberMatch));
+                            string secondMatch = input.Substring(firstMatch.Length + numberMatch.Length, (input.Length) - (firstMatch.Length + numberMatch.Length));
+
+                            //Ändrar färg på de highlightade delsträngarna
+                            Console.Write(firstMatch);
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write(numberMatch);
+                            Console.ResetColor();
+                            Console.WriteLine(secondMatch);
+                            
+                            //Summerar de olika delsträngarna
                             long result;
                             long.TryParse(numberMatch, out result);
                             sum += result;
@@ -57,9 +61,9 @@ namespace IthsLabb1
                     }
                 }
             }
-
+            //Skriver ut summan av delsträngarna
+            Console.WriteLine("");
             Console.WriteLine($"Summan av delsträngarna är {sum}");
-
 
 
             Console.ReadKey();
