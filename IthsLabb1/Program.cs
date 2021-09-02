@@ -37,7 +37,7 @@ namespace IthsLabb1
                             //Hittar de matchande delsträngarna samt kollar så den resterande texten i strängen inte blir en matchande delsträng
                             string numberMatch = input.Substring(i, j - i + 1);
                             string firstMatch = input.Substring(0, input.IndexOf(numberMatch));
-                            string secondMatch = input.Substring(firstMatch.Length + numberMatch.Length, (input.Length) - (firstMatch.Length + numberMatch.Length));
+                            string secondMatch = input.Substring(numberMatch.Length + firstMatch.Length);
 
                             //Ändrar färg på de highlightade delsträngarna
                             Console.Write(firstMatch);
