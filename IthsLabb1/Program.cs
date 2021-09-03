@@ -35,10 +35,10 @@ namespace IthsLabb1
                     {
                         if (input[i] == input[j])
                         {
-                            //Hittar de matchande delsträngarna samt kollar så den resterande texten i strängen inte blir en matchande delsträng
+                            //Hittar de matchande delsträngarna 
                             string numberMatch = input.Substring(i, j - i + 1);
                             string firstMatch = input.Substring(0, input.IndexOf(numberMatch));
-                            string secondMatch = input.Substring(numberMatch.Length + firstMatch.Length);
+                            string secondMatch = input.Substring(i + 1);
 
                             //Ändrar färg på de highlightade delsträngarna
                             Console.Write(firstMatch);
